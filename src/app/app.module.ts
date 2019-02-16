@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Pipes
 import { CreditCardFormatPipe } from './pipes/credit-card-format.pipe';
+import { CardComponent } from './pages/card/card.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CreditCardFormatPipe } from './pipes/credit-card-format.pipe';
     ClientsComponent,
     AdvisersComponent,
     ClientComponent,
-    CreditCardFormatPipe
+    CreditCardFormatPipe,
+    CardComponent
   ],
   imports: [
     BrowserModule,

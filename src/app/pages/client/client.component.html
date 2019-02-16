@@ -1,5 +1,13 @@
 <div class="container-fluid">
-	<h1 class="h3 mb-4 text-gray-800">Cliente #{{client.id}}</h1>
+
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<h1 class="h3 mb-4 text-gray-800">Cliente #{{client.id}}</h1>
+		<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+			<i class="far fa-credit-card fa-sm text-white-50"></i> 
+			Create Credit Card
+		</a>
+	</div>
+
 	<div class="client-profile">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -45,7 +53,7 @@
 								<div class="font-small mb-0 text-black-600">CCV {{card.ccv}}</div>
 							</div>
 							<div class="col-auto">
-								<a href="#" routerLink="/card/{{card.id}}">
+								<a href="#" routerLink="/card/{{client.id}}/{{card.id}}">
 									<i class="far fa-credit-card fa-2x text-gray-800"></i>
 								</a>
 							</div>

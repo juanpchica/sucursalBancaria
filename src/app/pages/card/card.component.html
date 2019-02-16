@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">
+		Credit Card 
+		<a href="#" routerLink="/clients/{{client.id}}" >
+			{{ client.name }}
+		</a>
+	</h1>
+    
+    <div class="content-cards">
+      <div class="row">
+        <div class="col-xl-12 mb-4">
+          <div class="card border-left-primary shadow h-100">
+            <div class="card-body pad-card">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Card Type: {{card.type}}</div>
+                  <div class="font-small mb-0 font-weight-bold text-black-600">Number: {{card.number | creditCardFormat}}</div>
+                  <div class="font-small mb-0 text-black-600">CCV: {{card.ccv}}</div>
+                </div>
+                <div class="col-auto">
+                 <i class="far fa-credit-card fa-2x text-gray-800"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div>
+	
+	<div class="card mb-3">
+		<div class="card-header">
+			<i class="fas fa-table"></i>
+			Card Consumptions
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover" width="100%" cellspacing="0">
+					<thead>
+					<tr>
+						<th><i class="fas fa-clock"></i> Date</th>
+						<th><i class="fas fa-info"></i> Description</th>
+						<th><i class="fas fa-money-bill-alt"></i> Amount</th>
+						<th class="text-center"><i class="fas fa-info-circle"></i> Actions</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr *ngFor="let consum of consumptions">
+						<td>{{ consum.date | date:'medium'}}</td>
+						<td>{{ consum.description}}</td>
+						<td>{{ consum.amount | currency:'COP' }}</td>
+						<td class="text-center">
+						<div class="actions-links">
+							<a title="Edit Consumption">
+								<i class="fas fa-edit"></i>
+							</a>
+							<a title="Delete User">
+								<i class="fas fa-trash-alt"></i>
+							</a>
+						</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+  
+</div>

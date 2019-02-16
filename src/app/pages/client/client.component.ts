@@ -50,7 +50,8 @@ export class ClientComponent implements OnInit {
 
 
   //Vista de tarjeta
-  showCard(id:number){
+  showCard(card: Card, element){
+    console.log(card,element);
 
   }
 

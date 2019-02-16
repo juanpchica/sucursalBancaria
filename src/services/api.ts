@@ -3,6 +3,7 @@ import { Client } from 'src/app/interfaces/client';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Card } from 'src/app/interfaces/card';
+import { Consumption } from 'src/app/interfaces/consumption';
 
 @Injectable()
 export class ApiService{
@@ -48,6 +49,33 @@ export class ApiService{
 			})
 		})
 	}
+
+	//Devuelvo una tarjeta en base a su id
+	getCard(id:number){
+		
+		//Retorno tarjetas
+		return new Promise<Card>((resolve,reject)=>{
+			this.get('card').subscribe((data)=>{
+				resolve(data);
+			},(error)=>{
+				reject(error);
+			})
+		})
+	}
+
+	//Devuelvo todos los consumos en esta tarjeta
+	getConsumptions(idCard:number){
+		
+		//Retorno consumos
+		return new Promise<Consumption[]>((resolve,reject)=>{
+			this.get('consumptions').subscribe((data)=>{
+				resolve(data);
+			},(error)=>{
+				reject(error);
+			})
+		})
+	}
+
 
 	//Metodos CRUD
 	
