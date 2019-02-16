@@ -10707,6 +10707,10 @@ footer.sticky-footer .copyright {
   font-size: 0.8rem;
 }
 
+.nav-link.active {
+  color: #0e42ff !important;
+}
+
 @media (min-width: 768px) {
   footer.sticky-footer {
     width: calc(100% - 225px);
