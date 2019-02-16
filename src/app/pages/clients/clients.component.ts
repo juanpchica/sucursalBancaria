@@ -21,9 +21,9 @@ export class ClientsComponent implements OnInit {
 
 	//Obtengo los clientes 
 	getClients(){
-		this.api.getClients().then((data)=>{
-			this.clients = data;
-		}).catch(error=>console.log(error))
+		this.api.getClients()
+			.then(data => this.clients = data)
+			.catch(error => console.log(error))
 	}
 
 }

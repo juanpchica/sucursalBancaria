@@ -8,3 +8,9 @@
 .actions-links a:hover{
     color: #0e42ff !important;
 }
+.font-small {
+    font-size: .8rem !important;
+}
+.pad-card {
+    padding: .7rem 1rem !important;
+}

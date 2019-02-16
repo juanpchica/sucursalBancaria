@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Client } from 'src/app/interfaces/client';
+import { ApiService } from 'src/services/api';
 
 @Component({
   selector: 'app-client',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientComponent implements OnInit {
 
-  constructor() { }
+  client: Client = {
+    id: 0,
+    name: '',
+    address: '',
+    city: '',
+    phone: '',
+    totalCards: 0
+  }
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private api: ApiService) { }
+
+  ngOnInit() { 
+    this.getClient();
+
+  }
+
+  //Get Client
+  getClient():void {
+
+    //Obtengo el id del cliente
+    const id = this.route.snapshot.paramMap.get('id');
+    this.api.getClient(+id).then(data => {
+      this.client = data;
+    })
   }
 
 }
