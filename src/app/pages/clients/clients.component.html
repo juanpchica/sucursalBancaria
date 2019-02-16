@@ -1,12 +1,19 @@
 <div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 text-gray-800">Clients List</h1>
+      <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm col-whi" (click)="addClient(content)">
+        <i class="fas fa-user-plus fa-sm text-white-50"></i> 
+        Add New Client
+      </a>
+    </div>
+
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a [routerLink]="['/clients']">Dashboard</a>
       </li>
       <li class="breadcrumb-item active">Clients</li>
     </ol>
-
-    <!-- DataTables Example -->
+    
     <div class="card mb-3">
       <div class="card-header">
         <i class="fas fa-table"></i>
@@ -37,7 +44,7 @@
                       <a routerLink="{{c.id}}" title="View User">
                           <i class="fas fa-eye"></i>
                       </a>
-                      <a title="Delete User" (click)="deleteUser(c)">
+                      <a title="Delete User" (click)="deleteClient(c)">
                           <i class="fas fa-trash-alt"></i>
                       </a>
                   </div>
@@ -50,3 +57,40 @@
     </div>
 
   </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add New Client</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+	<div class="contain-form-client">
+		<div class="form-group">
+			<label>Name</label>
+			<input type="text" class="form-control" [(ngModel)]="userClient.name" name="name" required maxlength="50" placeholder="Enter Name">
+		</div>
+		<div class="form-group">
+			<label>Address</label>
+			<input type="text" class="form-control" [(ngModel)]="userClient.address" name="address" maxlength="100" placeholder="Enter Address">
+		</div>
+		<div class="form-group">
+			<label>City</label>
+			<input type="text" class="form-control" [(ngModel)]="userClient.city" name="city" maxlength="30" placeholder="Enter City">
+		</div>
+		<div class="form-group">
+			<label>Phone</label>
+			<input type="number" class="form-control" [(ngModel)]="userClient.phone" name="phone" max="20" maxlength="20" placeholder="Enter Phone">
+		</div>
+	</div>
+
+  </div>
+  <div class="modal-footer">
+	<button type="button" class="btn btn-danger" (click)="modal.close('cancel')">Cancel</button>
+	<button type="button" class="btn btn-primary" (click)="modal.close('save')">Save</button>
+  </div>
+</ng-template>
+    

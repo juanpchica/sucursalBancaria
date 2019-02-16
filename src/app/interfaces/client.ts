@@ -1,5 +1,3 @@
-import { Card } from './card';
-
 export interface Client {
 
     // Defino los atributos que debe tener un cliente
@@ -9,5 +7,4 @@ export interface Client {
     city?: string;
     phone?: string;
     totalCards: number;
-    cards?: Card[];
 }

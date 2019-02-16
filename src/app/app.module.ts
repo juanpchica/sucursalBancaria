@@ -16,6 +16,7 @@ import { ApiService } from 'src/services/api';
 //Others Modules
 import {HttpClientModule} from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 //Pipes
 import { CreditCardFormatPipe } from './pipes/credit-card-format.pipe';
@@ -35,7 +36,8 @@ import { CardComponent } from './pages/card/card.component';
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ ApiService ],
   bootstrap: [AppComponent]
