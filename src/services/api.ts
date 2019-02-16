@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import { Client } from 'src/app/interfaces/client';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Card } from 'src/app/interfaces/card';
 
 @Injectable()
 export class ApiService{
@@ -35,6 +36,18 @@ export class ApiService{
 		})
 	}
 
+	//Devuelvo todas las tarjetas de un cliente
+	getCards(idClient:number){
+		
+		//Retorno tarjetas
+		return new Promise<Card[]>((resolve,reject)=>{
+			this.get('cards').subscribe((data)=>{
+				resolve(data);
+			},(error)=>{
+				reject(error);
+			})
+		})
+	}
 
 	//Metodos CRUD
 	

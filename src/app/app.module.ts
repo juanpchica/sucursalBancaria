@@ -1,21 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 //Routes
 import { AppRoutingModule } from './app-routing.module';
 
 //Components
 import { ClientsComponent } from './pages/clients/clients.component';
 import { AdvisersComponent } from './pages/advisers/advisers.component';
+import { ClientComponent } from './pages/client/client.component';
+import { AppComponent } from './app.component';
 
 // Service
 import { ApiService } from 'src/services/api';
 
+//Others Modules
 import {HttpClientModule} from '@angular/common/http';
-import { ClientComponent } from './pages/client/client.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+//Pipes
+import { CreditCardFormatPipe } from './pipes/credit-card-format.pipe';
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import { ClientComponent } from './pages/client/client.component';
     AppComponent,
     ClientsComponent,
     AdvisersComponent,
-    ClientComponent
+    ClientComponent,
+    CreditCardFormatPipe
   ],
   imports: [
     BrowserModule,

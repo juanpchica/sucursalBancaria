@@ -31,21 +31,23 @@
 		</div>
 	</div>
 
-	<h2 class="h3 mt-4 mb-4 text-gray-800">Credit Cards</h2>
-	<div class="content-cards">
+	
+	<div class="content-cards" *ngIf="cards.length > 0">
+	    <h2 class="h3 mt-4 mb-4 text-gray-800">Credit Cards</h2>
 		<div class="row">
-			<div class="col-xl-3 col-md-6 mb-4">
+			<div class="col-xl-3 col-md-6 mb-4" *ngFor="let card of cards">
 				<div class="card border-left-primary shadow h-100">
 					<div class="card-body pad-card">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
-								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Visa</div>
-								<div class="font-small mb-0 font-weight-bold text-black-600">4525 2154 5412 5487</div>
-								<div class="font-small mb-0 text-black-600">CCV 542</div>
-								<div class="font-small mb-0 text-black-600">Consume $40,000</div>
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{card.type}}</div>
+								<div class="font-small mb-0 font-weight-bold text-black-600">{{card.number | creditCardFormat}}</div>
+								<div class="font-small mb-0 text-black-600">CCV {{card.ccv}}</div>
 							</div>
 							<div class="col-auto">
-								<i class="far fa-credit-card fa-2x text-gray-800"></i>
+								<a href="#" routerLink="/card/{{card.id}}">
+									<i class="far fa-credit-card fa-2x text-gray-800"></i>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -53,4 +55,11 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="card" *ngIf="cards.length == 0">
+		<div class="card-body">
+			<p>Este cliente no tiene tarjetas</p>
+		</div>
+	</div>
+
 </div>
