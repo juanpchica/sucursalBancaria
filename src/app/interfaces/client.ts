@@ -8,5 +8,6 @@ export interface Client {
     address?: string;
     city?: string;
     phone?: string;
+    totalCards: number;
     cards?: Card[];
 }

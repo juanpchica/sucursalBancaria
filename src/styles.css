@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.actions-links a {
+    color: #696565 !important;
+    display: inline-block;
+    margin: 0 8px;
+    cursor: pointer;
+}
+.actions-links a:hover{
+    color: #0e42ff !important;
+}

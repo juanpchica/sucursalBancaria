@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/services/api';
+import { Client } from 'src/app/interfaces/client';
 
 @Component({
   selector: 'app-clients',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientsComponent implements OnInit {
 
-  constructor() { }
+	clients: Client[] = [];
 
-  ngOnInit() {
-  }
+	constructor(public api:ApiService) { }
+
+	ngOnInit() {
+
+		//Muestro los clientes
+		this.getClients();
+	}
+
+	//Obtengo los clientes 
+	getClients(){
+		this.api.getClients().then((data)=>{
+			this.clients = data;
+		}).catch(error=>console.log(error))
+	}
 
 }
