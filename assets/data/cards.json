@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "type": "Master Card",
+        "number": "1542154652320000",
+        "ccv": 654
+    },
+    {
+        "id": 2,
+        "type": "Maestro",
+        "number": "1564789414561245",
+        "ccv": 354
+    },
+    {
+        "id": 3,
+        "type": "Visa",
+        "number": "4587965852845412",
+        "ccv": 456
+    },
+    {
+        "id": 4,
+        "type": "American Express",
+        "number": "1356154652326523",
+        "ccv": 678
+    },
+    {
+        "id": 5,
+        "type": "Visa",
+        "number": "6548478554785847",
+        "ccv": 457
+    }
+]

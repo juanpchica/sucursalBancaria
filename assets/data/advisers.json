@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Esteban Pelaez",
+        "skill": "Ingeniero"
+    },
+    {
+        "id": 2,
+        "name": "Milton Rodriguez",
+        "skill": "Profesor"
+    },
+    {
+        "id": 3,
+        "name": "Mariana Vargas",
+        "skill": "Abogada"
+    },
+    {
+        "id": 4,
+        "name": "Carolina Perez",
+        "skill": "Consultor"
+    }
+]
