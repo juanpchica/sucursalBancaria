@@ -29,6 +29,8 @@ export class ClientsComponent implements OnInit {
 		this.getClients();
 	}
 
+
+
 	//Obtengo los clientes 
 	getClients(){
 		this.api.getClients()
