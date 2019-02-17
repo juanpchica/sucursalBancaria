@@ -1,3 +1,113 @@
-<p>
-  advisers works!
-</p>
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 text-gray-800">Advisers List</h1>
+      <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm col-whi" (click)="addAdviser(content)">
+        <i class="fas fa-user-plus fa-sm text-white-50"></i> 
+        Add New Adviser
+      </a>
+    </div>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/clients']">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Advisers</li>
+    </ol>
+    
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fas fa-table"></i>
+        Adviser</div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th><i class="fas fa-user"></i> Name</th>
+                <th><i class="fas fa-graduation-cap"></i> Skill</th>
+                <th class="text-center"><i class="fas fa-info-circle"></i> Actions</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th><i class="fas fa-user"></i> Name</th>
+                <th><i class="fas fa-graduation-cap"></i> Skill</th>
+                <th class="text-center"><i class="fas fa-info-circle"></i> Actions</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr *ngFor="let a of advisers">
+                <td>{{a.name}}</td>
+                <td>{{a.skill}}</td>
+                <td class="text-center">
+                  <div class="actions-links">
+                      <a title="View Adviser" (click)="editAdviser(a,contentEdit)">
+                          <i class="fas fa-edit"></i>
+                      </a>
+                      <a title="Delete Adviser" (click)="deleteAdviser(a)">
+                          <i class="fas fa-trash-alt"></i>
+                      </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Add New Adviser</h4>
+		<button type="button" class="close" aria-label="Close" (click)="modal.close('cancel')">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+	
+		<div class="contain-form-client">
+			<div class="form-group">
+				<label>Name</label>
+				<input type="text" class="form-control" [(ngModel)]="userAdviser.name" name="name" required maxlength="50" placeholder="Enter Name">
+			</div>
+			<div class="form-group">
+				<label>Skill</label>
+				<input type="text" class="form-control" [(ngModel)]="userAdviser.skill" name="skill" maxlength="50" placeholder="Enter Skill">
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-danger" (click)="modal.close('cancel')">Cancel</button>
+		<button type="button" class="btn btn-primary" (click)="modal.close('save')">Save</button>
+	</div>
+</ng-template>
+		  
+
+<ng-template #contentEdit let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Edit Adviser</h4>
+		<button type="button" class="close" aria-label="Close" (click)="modal.close('cancel')">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+	
+		<div class="contain-form-client">
+			<div class="form-group">
+				<label>Name</label>
+				<input type="text" class="form-control" [(ngModel)]="userAdviser.name" name="name" required maxlength="50" placeholder="Enter Name">
+			</div>
+			<div class="form-group">
+				<label>Address</label>
+				<input type="text" class="form-control" [(ngModel)]="userAdviser.skill" name="skill" maxlength="50" placeholder="Enter Skill">
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-danger" (click)="modal.close('cancel')">Cancel</button>
+		<button type="button" class="btn btn-primary" (click)="modal.close('save')">Save</button>
+	</div>
+</ng-template>

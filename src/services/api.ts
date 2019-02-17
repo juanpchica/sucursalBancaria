@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Card } from 'src/app/interfaces/card';
 import { Consumption } from 'src/app/interfaces/consumption';
+import { Adviser } from 'src/app/interfaces/adviser';
 
 @Injectable()
 export class ApiService{
@@ -76,6 +77,17 @@ export class ApiService{
 		})
 	}
 
+	//Devuelvo todos los clientes
+	getAdvisers(){
+		//Retorno tipo cliente
+		return new Promise<Adviser[]>((resolve,reject)=>{
+			this.get('advisers').subscribe((data)=>{
+				resolve(data);
+			},(error)=>{
+				reject(error);
+			})
+		})
+	}
 
 	//Metodos CRUD
 	
