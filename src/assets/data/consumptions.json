@@ -1,19 +1,19 @@
 [
     {
         "id": 1,
-        "date": "03-25-2019",
+        "date": "2019-05-12",
         "description": "Este es un consumo para una tarjeta de credito de prueba 1",
         "amount": "350000" 
     },
     {
         "id": 2,
-        "date": "08-08-2016",
+        "date": "2016-08-08",
         "description": "Este es un consumo para una tarjeta de credito de prueba 2",
         "amount": "35000"
     },
     {
         "id": 3,
-        "date": "12-05-2020",
+        "date": "2020-12-05",
         "description": "Este es un consumo para una tarjeta de credito de prueba 3",
         "amount": "50000" 
     }

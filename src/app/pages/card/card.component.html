@@ -1,10 +1,23 @@
 <div class="container-fluid">
-    <h1 class="h3 mb-4 text-gray-800">
-		Credit Card 
-		<a href="#" routerLink="/clients/{{client.id}}" >
-			{{ client.name }}
-		</a>
-	</h1>
+	
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<h1 class="h3 mb-4 text-gray-800">
+			Credit Card 
+			<a href="#" routerLink="/clients/{{client.id}}" >
+				{{ client.name }}
+			</a>
+		</h1>
+		<div>
+			<a class="d-none col-whi d-sm-inline-block btn btn-sm btn-secondary shadow-sm mr-2" (click)="showPopUp(contentCard)">
+				<i class="fas fa-user fa-sm text-white-50"></i> 
+				Edit Credit Car
+			</a>
+			<a class="d-none col-whi d-sm-inline-block btn btn-sm btn-primary shadow-sm" (click)="showPopUp(contentConsumption)">
+				<i class="far fa-credit-card fa-sm text-white-50"></i> 
+				New Consumption
+			</a>
+		</div>
+	</div>
     
     <div class="content-cards">
       <div class="row">
@@ -45,15 +58,15 @@
 					</thead>
 					<tbody>
 					<tr *ngFor="let consum of consumptions">
-						<td>{{ consum.date | date:'medium'}}</td>
+						<td>{{ consum.date}}</td>
 						<td>{{ consum.description}}</td>
 						<td>{{ consum.amount | currency:'COP' }}</td>
 						<td class="text-center">
 						<div class="actions-links">
-							<a title="Edit Consumption">
+							<a title="Edit Consumption" (click)="editConsum(consum,contentEditConsum)">
 								<i class="fas fa-edit"></i>
 							</a>
-							<a title="Delete User">
+							<a title="Delete User" (click)="deleteConsum(consum)">
 								<i class="fas fa-trash-alt"></i>
 							</a>
 						</div>
@@ -66,3 +79,109 @@
 	</div>
   
 </div>
+
+
+<ng-template #contentCard let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">Edit Credit Card</h4>
+		<button type="button" class="close" aria-label="Close" (click)="modal.close('cancel')">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="contain-form-client">
+			<div class="form-group">
+				<label>Type</label>
+				<input type="text" class="form-control" [(ngModel)]="card.type" name="type" required maxlength="30" placeholder="Enter type">
+			</div>
+			<div class="form-group">
+				<label>Number</label>
+				<input type="text" class="form-control" [(ngModel)]="card.number" name="number" maxlength="16" minlength="16" placeholder="Enter number">
+			</div>
+			<div class="form-group">
+				<label>CCV</label>
+				<input type="text" class="form-control" [(ngModel)]="card.ccv" name="ccv" maxlength="4" minlength="3" placeholder="Enter ccv">
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-danger" (click)="modal.close('cancel')">Cancel</button>
+		<button type="button" class="btn btn-primary" (click)="modal.close('save-card')">Save</button>
+	</div>
+</ng-template>
+
+<ng-template #contentEditConsum let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">Edit Consumption</h4>
+		<button type="button" class="close" aria-label="Close" (click)="modal.close('cancel')">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="contain-form-client">
+			<div class="form-group">
+				<label>Date</label>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<input class="form-control" placeholder="yyyy-mm-dd" name="date" [(ngModel)]="consumDate" ngbDatepicker #d="ngbDatepicker">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+							<i class="fas fa-calendar-alt"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Amount</label>
+				<input type="text" class="form-control" [(ngModel)]="consumU.amount" name="amount" maxlength="16" minlength="12" placeholder="Enter Amount">
+			</div>
+			<div class="form-group">
+				<label>Description</label>
+				<textarea name="description" rows="6" class="form-control" [(ngModel)]="consumU.description" maxlength="100" placeholder="Enter Description"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-danger" (click)="modal.close('cancel')">Cancel</button>
+		<button type="button" class="btn btn-primary" (click)="modal.close('save-consum')">Save</button>
+	</div>
+</ng-template>
+
+<ng-template #contentConsumption let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">New Consumption</h4>
+		<button type="button" class="close" aria-label="Close" (click)="modal.close('cancel')">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="contain-form-client">
+			<div class="form-group">
+				<label>Date</label>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<input class="form-control" placeholder="yyyy-mm-dd" name="date" [(ngModel)]="consumDate" ngbDatepicker #d="ngbDatepicker">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+							<i class="fas fa-calendar-alt"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Amount</label>
+				<input type="text" class="form-control" [(ngModel)]="consumU.amount" name="amount" maxlength="16" minlength="12" placeholder="Enter Amount">
+			</div>
+			<div class="form-group">
+				<label>Description</label>
+				<textarea name="description" rows="6" class="form-control" [(ngModel)]="consumU.description" maxlength="100" placeholder="Enter Description"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-danger" (click)="modal.close('cancel')">Cancel</button>
+		<button type="button" class="btn btn-primary" (click)="modal.close('save-consum')">Save</button>
+	</div>
+</ng-template>

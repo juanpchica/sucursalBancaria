@@ -17,3 +17,13 @@
 .col-whi{
     color: #fff !important;
 }
+.icon-delete-card {
+    position: absolute;
+    right: -5px;
+    top: -10px;
+    display: none;
+    cursor: pointer;
+}
+.card:hover .icon-delete-card {
+    display: block;
+}

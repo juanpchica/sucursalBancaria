@@ -1,6 +1,6 @@
 export interface Consumption{
     id: number;
-    date: Date;
+    date: string;
     description?: string;
     amount: string;
 }
