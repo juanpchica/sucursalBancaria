@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Client } from 'src/app/interfaces/client';
 import { ApiService } from 'src/services/api';
 import { Card } from 'src/app/interfaces/card';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-client',
@@ -20,9 +21,21 @@ export class ClientComponent implements OnInit {
     totalCards: 0
   }
 
+  //Card user for ngmodel form
+  userCard: Card = {
+    id:0,
+    type : '',
+		number : '',
+		ccv : 0
+  }
+
   cards: Card[] = [];
 
-  constructor(private route: ActivatedRoute, private api: ApiService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private api: ApiService,
+    private modalService:NgbModal
+  ) { }
 
   ngOnInit() { 
     this.getClient();
@@ -55,4 +68,43 @@ export class ClientComponent implements OnInit {
 
   }
 
+  //Muestro Modal con formularios
+  showPopUp(content){
+    this.modalService.open(content).result.then((result) => {
+			
+			//Guardo los nuevos cambios del cliente
+			if(result == 'save-client'){
+        
+        //Agrego el nuevo cliente
+				if(this.client.name && this.client.name != ''){
+					this.client = this.client; //Actualizo registro
+					console.log(this.client);
+        }
+        
+			}else if(result == 'save-card'){
+
+        //Agrego nueva tarjeta - valido que todos los campos esten llenos
+        if(this.userCard.type != '' && this.userCard.number != '' && this.userCard.ccv != 0){
+					this.userCard.id += 1;
+					this.cards.push(this.userCard);
+					console.log(this.userCard);
+				}
+
+      }
+		})
+
+		this.resetCard();
+  }
+
+  //Limpio objeto cliente
+	resetCard(){
+		this.userCard.type = '';
+		this.userCard.number = '';
+		this.userCard.ccv = 0;
+	}
+
+  //Metodo eliminar
+	deleteCard(card):void{
+		this.cards = this.cards.filter(obj => obj !== card);
+	}
 }
